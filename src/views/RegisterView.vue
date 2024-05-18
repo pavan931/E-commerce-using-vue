@@ -8,7 +8,8 @@ const form = ref({
   confirmPass: '',
   remember: false,
   showPassword: false,
-  showPassword1: false
+  showPassword1: false,
+  mobileNo: ''
 })
 
 function submit() {
@@ -57,8 +58,30 @@ function submit() {
               @click:appendInner="form.showPassword1 = !form.showPassword1"
               variant="solo"
             ></v-text-field>
-            <v-checkbox v-model="form.remember" label="Remember Me" color="red" hide-details>
-            </v-checkbox>
+
+            <v-text-field
+              v-model="form.mobileNo"
+              label="Mobile"
+              variant="solo"
+              prepend-inner-icon="mdi-cellphone"
+            >
+            </v-text-field>
+
+            <div>
+              <v-row align="center" justify="space-between">
+                <v-col cols="auto">
+                  <v-checkbox
+                    v-model="form.remember"
+                    label="Remember Me"
+                    color="red"
+                    hide-details
+                  ></v-checkbox>
+                </v-col>
+                <v-col cols="auto">
+                  <v-btn to="/login" color="red-darken-1">Login</v-btn>
+                </v-col>
+              </v-row>
+            </div>
 
             <v-btn color="red-darken-1" class="mt-2" type="submit" block>Submit</v-btn>
           </v-form>
