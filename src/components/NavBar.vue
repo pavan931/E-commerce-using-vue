@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app dark flat>
+  <v-app-bar app dark flat class="mt-1" height="100">
     <v-btn>
       <v-icon left class="mr-2">mdi-menu</v-icon>
     </v-btn>
@@ -14,7 +14,7 @@
         text-align: center;
       "
     >
-      <h4>Ecommerce</h4>
+      <h4 class="title-font">Natures Nest</h4>
     </div>
     <v-spacer></v-spacer>
     <v-col cols="3">
@@ -32,3 +32,10 @@
 </template>
 
 <script setup></script>
+
+<style scoped>
+.title-font {
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
+}
+</style>

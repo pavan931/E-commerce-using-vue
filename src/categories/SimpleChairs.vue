@@ -1,0 +1,117 @@
+<script setup>
+const chairs = [
+  {
+    class: 'pa-0',
+    image: 'c1.jpg',
+    title: 'Lounge Chair',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c2.jpg',
+    title: 'Repos',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c3.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c4.png',
+    title: 'Loby Chair',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c5.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c6.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c7.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c8.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c9.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c10.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c11.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c12.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c13.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c14.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c15.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  },
+  {
+    class: 'pa-0',
+    image: 'c16.png',
+    title: 'Modern Lounge',
+    price: '$ 145.00'
+  }
+]
+</script>
+
+<template>
+  <v-row>
+    <v-col cols="12" sm="3" v-for="(chair, i) in chairs" :key="i">
+      <v-card height="300" align="center" flat outlined tile>
+        <v-img :src="chair.image" width="200" height="200" contain></v-img>
+        <v-card-text class="mt-n1">
+          <strong>{{ chair.title }}</strong>
+        </v-card-text>
+        <v-card-text class="mt-n4">
+          <strong>{{ chair.price }}</strong>
+        </v-card-text>
+      </v-card>
+    </v-col>
+  </v-row>
+  <v-divider></v-divider>
+</template>

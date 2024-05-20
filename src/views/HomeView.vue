@@ -1,114 +1,41 @@
 <script setup>
 import FooterView from '@/components/FooterView.vue'
 import NavBar from '@/components/NavBar.vue'
+import { ref } from 'vue'
+// import { useRouter } from 'vue-router'
+// const router = useRouter()
 
 let chair = true
 let other = false
 let slider2 = 50
-const categories = [
+const categories = ref([
   { img: '9.png', title: 'SLEEPING BEDS' },
   { img: '2.png', title: 'LOUNGE CHAIRS' },
   { img: '1.png', title: 'CHAIRS' },
   { img: '4.png', title: 'OFFICE CHAIRS' },
   { img: '8.jpg', title: 'TABLES NIGHTSTANDS' },
   { img: '6.png', title: 'KITCHEN FURNITURE' }
-]
-const chairs = [
+])
+
+const getCategoryRoute = (categoryTitle) => {
+  return `/category/${categoryTitle.toLowerCase().replace(/\s/g, '')}`
+}
+
+const items = [
   {
-    class: 'pa-0',
-    image: 'c1.jpg',
-    title: 'Lounge Chair',
-    price: '$ 145.00'
+    src: './src/assets/pic1 (1).jpg'
   },
   {
-    class: 'pa-0',
-    image: 'c2.jpg',
-    title: 'Repos',
-    price: '$ 145.00'
+    src: './src/assets/pic1 (2).jpg'
   },
   {
-    class: 'pa-0',
-    image: 'c3.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
+    src: './src/assets/pic1 (3).jpg'
   },
   {
-    class: 'pa-0',
-    image: 'c4.png',
-    title: 'Loby Chair',
-    price: '$ 145.00'
+    src: './src/assets/pic1 (4).jpg'
   },
   {
-    class: 'pa-0',
-    image: 'c5.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c6.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c7.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c8.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c9.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c10.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c11.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c12.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c13.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c14.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c15.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
-  },
-  {
-    class: 'pa-0',
-    image: 'c16.png',
-    title: 'Modern Lounge',
-    price: '$ 145.00'
+    src: './src/assets/pic1 (5).jpg'
   }
 ]
 </script>
@@ -116,6 +43,20 @@ const chairs = [
 <template>
   <v-app>
     <NavBar />
+    <v-carousel hide-delimiters cycle interval="2000" show-arrows height="500px">
+      <template v-slot:prev>
+        <v-btn icon class="transparent-arrow">
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+      </template>
+      <template v-slot:next>
+        <v-btn icon class="transparent-arrow">
+          <v-icon>mdi-chevron-right</v-icon>
+        </v-btn>
+      </template>
+
+      <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src" cover></v-carousel-item>
+    </v-carousel>
     <v-container fluid>
       <v-card
         color="#F7F7F7"
@@ -138,14 +79,13 @@ const chairs = [
                     v-for="(category, i) in categories"
                     :key="i"
                   >
-                    <v-item v-slot="{ active, toggle }">
+                    <router-link :to="getCategoryRoute(category.title)">
                       <v-card
                         :color="active ? '#D5F0DB' : 'white'"
                         :class="active ? 'borderme' : 'borderout'"
                         class="d-flex align-center rounded-lg mx-2"
                         dark
                         height="170"
-                        @click="toggle"
                         flat
                       >
                         <v-row>
@@ -170,7 +110,7 @@ const chairs = [
                           </v-col>
                         </v-row>
                       </v-card>
-                    </v-item>
+                    </router-link>
                   </v-col>
                 </v-row>
               </v-container>
@@ -178,7 +118,7 @@ const chairs = [
           </v-col>
         </v-row>
       </v-card>
-      <v-toolbar color="transparent" dark class="mt-3">
+      <!-- <v-toolbar color="transparent" dark class="mt-3">
         <v-checkbox v-model="chair" label="Chairs" class="check mt-4"></v-checkbox>
         <v-checkbox v-model="other" label="Othermass" class="check mt-4"></v-checkbox>
         <v-divider vertical></v-divider>
@@ -204,28 +144,15 @@ const chairs = [
         <v-btn variant="text" color="">Name</v-btn>
         <v-btn variant="text" color="grey">Popularity</v-btn>
         <v-btn variant="text" color="grey">Price</v-btn>
-      </v-toolbar>
-      <!-- <v-row>
-        <v-col cols="12" sm="3" v-for="(chair, i) in chairs" :key="i">
-          <v-card height="300" align="center" flat outlined tile>
-            <v-img :src="chair.image" width="200" height="200" contain></v-img>
-            <v-card-text class="mt-n1">
-              <strong>{{ chair.title }}</strong>
-            </v-card-text>
-            <v-card-text class="mt-n4">
-              <strong>{{ chair.price }}</strong>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row> -->
-      <v-divider></v-divider>
-      <v-toolbar color="transparent">
+      </v-toolbar> -->
+
+      <!-- <v-toolbar color="transparent">
         <v-toolbar-title class="text-caption">Show more chairs</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-icon color="grey" left class="mr-4 mt-n1">mdi-arrow-left</v-icon>
         <span class="text-caption">1</span>
         <v-icon color="grey" left class="ml-4 mt-n1 mr-2">mdi-arrow-right</v-icon>
-      </v-toolbar>
+      </v-toolbar> -->
     </v-container>
     <FooterView />
   </v-app>
@@ -243,5 +170,14 @@ const chairs = [
 }
 .v-card.borderout {
   border: 1px solid #d5f0db !important;
+}
+
+<style scoped > .v-carousel-item {
+  height: 400px; /* Adjust the height as needed */
+}
+
+.transparent-arrow {
+  background-color: transparent !important;
+  color: white !important;
 }
 </style>

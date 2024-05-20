@@ -31,6 +31,37 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
+    },
+
+    {
+      path: '/category/sleepingbeds',
+      name: 'sleepingbeds',
+      component: () => import('../categories/SleepingBeds.vue')
+    },
+    {
+      path: '/category/loungechairs',
+      name: 'loungechairs',
+      component: () => import('../categories/LoungeChairs.vue')
+    },
+    {
+      path: '/category/chairs',
+      name: 'chairs',
+      component: () => import('../categories/SimpleChairs.vue')
+    },
+    {
+      path: '/category/officechairs',
+      name: 'officechairs',
+      component: () => import('../categories/OfficeChairs.vue')
+    },
+    {
+      path: '/category/tablesnightstands',
+      name: 'tablesnightstands',
+      component: () => import('../categories/TablesNightStands.vue')
+    },
+    {
+      path: '/category/kitchenfurniture',
+      name: 'kitchenfurniture',
+      component: () => import('../categories/KitchenFurniture.vue')
     }
   ]
 })
