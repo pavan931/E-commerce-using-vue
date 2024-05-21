@@ -47,13 +47,6 @@
 import { ref } from 'vue'
 import { useTheme } from 'vuetify/lib/framework.mjs'
 
-const notis = [
-  { title: 'Click Me' },
-  { title: 'Click Me' },
-  { title: 'Click Me' },
-  { title: 'Click Me 2' }
-]
-
 const darkTheme = ref(false)
 const theme = useTheme()
 

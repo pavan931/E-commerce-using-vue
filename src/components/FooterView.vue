@@ -34,6 +34,32 @@ const isDarkTheme = computed(() => theme.global.name.value === 'dark')
         @ {{ new Date().getFullYear() }} -
         <strong> All Rights Reserved</strong>
       </v-card-text>
+
+      <v-card-item>
+        <v-card-subtitle class="text-center"> Socialize with Us </v-card-subtitle>
+        <v-row justify="center" align="center" class="mb-2">
+          <v-col cols="auto">
+            <v-btn icon href="https://www.facebook.com" target="_blank">
+              <v-icon size="24px">mdi-facebook</v-icon>
+            </v-btn>
+          </v-col>
+          <v-col cols="auto">
+            <v-btn icon href="https://www.twitter.com" target="_blank">
+              <v-icon size="24px">mdi-twitter</v-icon>
+            </v-btn>
+          </v-col>
+          <v-col cols="auto">
+            <v-btn icon href="https://www.instagram.com" target="_blank">
+              <v-icon size="24px">mdi-instagram</v-icon>
+            </v-btn>
+          </v-col>
+          <v-col cols="auto">
+            <v-btn icon href="https://www.linkedin.com" target="_blank">
+              <v-icon size="24px">mdi-linkedin</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-card-item>
     </v-card>
   </v-footer>
 </template>
