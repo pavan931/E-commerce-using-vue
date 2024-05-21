@@ -15,6 +15,16 @@ const form = ref({
 function submit() {
   alert(JSON.stringify(form.value))
 }
+
+const rules = {
+  required: (value) => !!value || 'Required.',
+  counter: (value) => value.length <= 20 || 'Max 20 characters',
+  email: (value) => {
+    const pattern =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return pattern.test(value) || 'Invalid e-mail.'
+  }
+}
 </script>
 
 <template>
@@ -34,6 +44,7 @@ function submit() {
             </v-text-field>
             <v-text-field
               v-model="form.email"
+              :rules="[rules.required, rules.email]"
               label="Email"
               variant="solo"
               prepend-inner-icon="mdi-email"
@@ -44,7 +55,7 @@ function submit() {
               :append-inner-icon="form.showPassword ? 'mdi-eye' : 'mdi-eye-off'"
               v-model="form.password"
               label="Password"
-              prepend-inner-icon="mdi-key"
+              prepend-inner-icon="mdi-lock"
               variant="solo"
               @click:appendInner="form.showPassword = !form.showPassword"
             ></v-text-field>
@@ -54,7 +65,7 @@ function submit() {
               :append-inner-icon="form.showPassword1 ? 'mdi-eye' : 'mdi-eye-off'"
               v-model="form.confirmPass"
               label="Confirm Password"
-              prepend-inner-icon="mdi-key"
+              prepend-inner-icon="mdi-lock"
               @click:appendInner="form.showPassword1 = !form.showPassword1"
               variant="solo"
             ></v-text-field>

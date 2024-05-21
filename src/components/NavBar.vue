@@ -1,8 +1,11 @@
 <template>
   <v-app-bar app dark flat class="mt-1" height="100">
-    <v-btn>
-      <v-icon left class="mr-2">mdi-menu</v-icon>
+    <!-- Dropdown Menu with mdi-menu button -->
+
+    <v-btn icon>
+      <v-icon left class="mr-2" icon="mdi-menu"></v-icon>
     </v-btn>
+
     <v-toolbar-title>CATALOGUE</v-toolbar-title>
     <div
       style="
@@ -14,9 +17,18 @@
         text-align: center;
       "
     >
-      <h4 class="title-font">Natures Nest</h4>
+      <router-link to="/" style="text-decoration: none">
+        <v-btn text>
+          <h4 class="title-font">Natures Nest</h4>
+        </v-btn>
+      </router-link>
     </div>
     <v-spacer></v-spacer>
+
+    <v-btn icon @click="changeTheme">
+      <v-icon :icon="darkTheme ? 'mdi-weather-sunny' : 'mdi-weather-night'"></v-icon>
+    </v-btn>
+
     <v-col cols="3">
       <v-text-field
         density="compact"
@@ -31,11 +43,29 @@
   </v-app-bar>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+import { useTheme } from 'vuetify/lib/framework.mjs'
+
+const notis = [
+  { title: 'Click Me' },
+  { title: 'Click Me' },
+  { title: 'Click Me' },
+  { title: 'Click Me 2' }
+]
+
+const darkTheme = ref(false)
+const theme = useTheme()
+
+function changeTheme() {
+  darkTheme.value = !darkTheme.value
+  theme.global.name.value = darkTheme.value ? 'dark' : 'light'
+}
+</script>
 
 <style scoped>
 .title-font {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Bastarda', sans-serif;
   font-size: 30px;
 }
 </style>
