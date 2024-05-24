@@ -17,7 +17,7 @@
     >
       <router-link to="/" style="text-decoration: none">
         <v-btn text>
-          <h4 class="title-font">Natures Nest</h4>
+          <h4 class="title-font">Binnu's Nest</h4>
         </v-btn>
       </router-link>
     </div>

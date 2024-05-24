@@ -1,6 +1,6 @@
 <script setup>
-import FooterView from '@/components/FooterView.vue'
-import NavBar from '@/components/NavBar.vue'
+import FooterView from '../components/FooterView.vue'
+import NavBar from '../components/NavBar.vue'
 import { ref, computed } from 'vue'
 import { useTheme } from 'vuetify/lib/framework.mjs'
 
