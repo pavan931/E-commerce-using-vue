@@ -1,7 +1,5 @@
 <template>
   <v-app-bar app dark flat class="mt-1" height="100">
-    <!-- Dropdown Menu with mdi-menu button -->
-
     <v-btn icon>
       <v-icon left class="mr-2" icon="mdi-menu"></v-icon>
     </v-btn>
@@ -25,6 +23,11 @@
     </div>
     <v-spacer></v-spacer>
 
+    <!-- Cart Icon Button -->
+    <v-btn icon @click="goToCart">
+      <v-icon>mdi-cart</v-icon>
+    </v-btn>
+
     <v-btn icon @click="changeTheme">
       <v-icon :icon="darkTheme ? 'mdi-weather-sunny' : 'mdi-weather-night'"></v-icon>
     </v-btn>
@@ -46,13 +49,19 @@
 <script setup>
 import { ref } from 'vue'
 import { useTheme } from 'vuetify/lib/framework.mjs'
+import { useRouter } from 'vue-router'
 
 const darkTheme = ref(false)
 const theme = useTheme()
+const router = useRouter()
 
 function changeTheme() {
   darkTheme.value = !darkTheme.value
   theme.global.name.value = darkTheme.value ? 'dark' : 'light'
+}
+
+function goToCart() {
+  router.push('/cart')
 }
 </script>
 

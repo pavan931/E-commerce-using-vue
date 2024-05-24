@@ -62,6 +62,11 @@ const router = createRouter({
       path: '/category/kitchenfurniture',
       name: 'kitchenfurniture',
       component: () => import('../categories/KitchenFurniture.vue')
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: () => import('../components/CartPage.vue')
     }
   ]
 })
